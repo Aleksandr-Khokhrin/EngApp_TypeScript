@@ -14,7 +14,9 @@ const LogIn = () => {
   const Navigate = useNavigate();
   const [mistake, setMistake] = useState(true)
 
-  const goToAppHandler = () => {};
+  const goToAppHandler = () => {
+    Navigate("/main");
+  };
   const emailHandler = () => {};
   const comeBackHandler = () => {
     Navigate("/");

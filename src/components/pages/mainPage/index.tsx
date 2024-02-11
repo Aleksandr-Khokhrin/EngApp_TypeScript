@@ -7,7 +7,8 @@ import "./style.css";
 
 const MainPage = () => {
   return (
-    <div>
+      <div>
+        mainPage
       <Routes>
         {/* <Route path='/' element={<MainPage/>} /> */}
       </Routes>

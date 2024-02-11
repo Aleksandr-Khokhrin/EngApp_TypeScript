@@ -112,7 +112,7 @@ const Reg = () => {
           </div>
         )}
         {/* <PrimaryInput onChange={emailHandler} type="text" text="Password" /> */}
-        <SecondaryBtn onClick={regRoadHandler} text="Войти" />
+        <SecondaryBtn onClick={regRoadHandler} text={content.btn} />
         {content.textForClick ? <p>{content.textForClick}</p> : ""}
       </div>
       <div className="logoImgDown">
