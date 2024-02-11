@@ -1,0 +1,61 @@
+.authBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding: 0 26px;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  color: var(--main-dark);
+  text-align: center;
+  line-height: 120%;
+}
+
+.headerLogElements {
+  margin-top: -10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contentBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.logoImgDown img {
+  width: 87px;
+  height: 35px;
+}
+
+.mistakeDiv {
+  color: var(--main-dark);
+  font-size: 15px;
+  font-weight: 400;
+  padding: 13px 30px;
+  border-radius: 7px;
+  background: var(--mistakeColor);
+}
+
+.guysImg img {
+  width: 200px;
+  height: 200px;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 600;
+  padding-bottom: 13px;
+}
+
+.anotherBtn {
+  border: none;
+  color: var(--main-dark);
+  font-size: 15px;
+  font-weight: 400;
+  padding: 10px;
+  line-height: 120%;
+  background-color: transparent !important;
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */

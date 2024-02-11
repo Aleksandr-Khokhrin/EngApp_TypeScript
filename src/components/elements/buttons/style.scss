@@ -1,0 +1,28 @@
+.btn {
+  padding: 18px 148px;
+  border-radius: 7px;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 1.3s;
+}
+.primary {
+  border: 1px solid var(--main-dark);
+  color: var(--main-dark);
+  background: var(--lightBG);
+  &:hover {
+    background: var(--main-dark);
+    color: var(--lightBG);
+  }
+}
+.secondary {
+  border: 1px solid var(--main-dark);
+  background: var(--main-dark);
+  color: var(--lightBG);
+  &:hover {
+    color: var(--main-dark);
+    background: var(--lightBG);
+  }
+}

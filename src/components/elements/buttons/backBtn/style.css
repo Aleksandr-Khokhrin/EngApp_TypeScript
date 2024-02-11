@@ -1,0 +1,20 @@
+.backBtn {
+  background-color: var(--navigateBg);
+  border: 1px solid var(--navigateBg);
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s;
+  cursor: pointer;
+}
+.backBtn:hover {
+  transform: none;
+  border: 1px solid var(--shadow);
+}
+
+.backBtn img {
+  width: 24px;
+  height: 24px;
+}/*# sourceMappingURL=style.css.map */

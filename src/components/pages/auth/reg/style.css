@@ -1,0 +1,5 @@
+.contentBox .finishRegBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}/*# sourceMappingURL=style.css.map */
