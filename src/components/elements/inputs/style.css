@@ -37,4 +37,7 @@
   font-weight: 400;
   font-size: 15px;
   line-height: 120%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }/*# sourceMappingURL=style.css.map */

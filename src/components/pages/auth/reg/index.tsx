@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useAtom } from "jotai";
+import { regAtom } from "../../../../atom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRegister } from "../../../../redux/slices/auth";
 
 import reg1 from "./reg1.svg";
 import reg2 from "./reg2.svg";
@@ -14,6 +18,11 @@ import BackBtn from "../../../elements/buttons/backBtn";
 import "./style.css";
 
 const Reg = () => {
+  const [regData] = useAtom(regAtom);
+  const data = useSelector((state) => state)
+  const dispatch = useDispatch()
+  console.log(regData);
+
   const regInfo = [
     {
       id: 1,
@@ -41,20 +50,43 @@ const Reg = () => {
     },
   ];
   const Navigate = useNavigate();
-  const [mistake, setMistake] = useState(false);
+  const [mistake, ] = useState(false);
   const [index, setIndex] = useState(0);
   const [content, setContent] = useState(regInfo[index]);
 
-  const regRoadHandler = () => {
+  const regRoadHandler = async () => {
     setIndex((prevIndex) => {
       if (prevIndex !== 2) {
         return prevIndex + 1;
       } else {
-        Navigate("/main");
-        return prevIndex; // Возвращаем текущий индекс в случае перехода
+        if (regData.passwordOne === regData.passwordTwo) {
+          Navigate("/main");
+          const data: { email: string, password: string } = {
+            email: regData.email,
+            password: regData.passwordOne
+          };
+          try {
+            // const response = await fetchRegisterFunction(data)
+            return prevIndex;
+          } catch (error) {
+            alert("Ошибка при регистрации: " + (error as Error).message);
+            return prevIndex;
+          }
+        } else {
+          alert("Пароли не совпадают!");
+          return prevIndex; // Возвращаем текущий индекс в случае перехода
+        }
       }
     });
   };
+  // const fetchRegisterFunction = async (data: { email: string, password: string }) => {
+  //   try {
+  //     const response = await dispatch(fetchRegister(data));
+  //     return response;
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
 
   useEffect(() => {
     setContent(regInfo[index]);
@@ -94,6 +126,7 @@ const Reg = () => {
             onChange={emailHandler}
             type="text"
             text="Email@example.com"
+            name="email"
           />
         ) : content.id === 2 ? (
           <MultiInput onChange={codeHandler} />
@@ -103,11 +136,13 @@ const Reg = () => {
               onChange={firstPasswordHandler}
               type="password"
               text="Password"
+              name="passwordOne"
             />
             <PrimaryInput
               onChange={secondPasswordHandler}
               type="password"
               text="Confirm password"
+              name="passwordTwo"
             />
           </div>
         )}
