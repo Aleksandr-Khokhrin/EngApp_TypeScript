@@ -1,48 +1,57 @@
 
 # ---EngApp_TypeScript ---
 
+![image](https://github.com/Aleksandr-Khokhrin/EngApp_TypeScript/assets/147053338/d49385f0-b64a-4b08-a7b5-dfa3fdd82f52)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Краткое описание: В репозитории отображается часть проекта, который находится в разработке. Для обозрения выложена часть с регистрацией и авторизацией пользователя написанная на React с использованием TypeScript. Приложение находится в стадии разработки и этот код я выложил с целью демонстрации своих навыков в решении определенного спектра задач. Не на всех проектах требуется использовать именно TypeScript и этот один из немногих, где использование строгой типизации является обязательным условием. До этого проекта у меня был небольшой опыт в работе на TypeScript.
 
-## Available Scripts
+Основная идея: Продемонстрировать свои навыки в работе с TypeScript на примере классического функционала регистрации и авторизации пользователя.
 
-In the project directory, you can run:
+Функционал:
+1. В приложении имеется стадия регистрации и авторизации пользователя. Для реализации логики я создал два компонента, который я буду использовать и для регистрации и для авторизации пользователя.
+Главная задача - свести к минимуму повторяющиеся участки кода и заранее продумать сбор информации в стейт для последующей отправки на Backend. Основной компонент регистрации пользователя:
 
-### `npm start`
+![image](https://github.com/Aleksandr-Khokhrin/EngApp_TypeScript/assets/147053338/b8ac99eb-fa83-4c10-8ba2-6a568f783135)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Как можно заметить я создал объект content(regInfo) и рендерю данные в соответствии с той стадией регистрации/авторизации, на которой находится пользователь:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![image](https://github.com/Aleksandr-Khokhrin/EngApp_TypeScript/assets/147053338/7c54c264-ead0-4a29-b325-03da76312096)
 
-### `npm test`
+Аналогичную подход я использовал к авторизации.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Для реализации рендеринга inputs и buttons я создал эти компоненты отдельно. Возьмем дял примера компонент PrimaryInput.
+Как можно увидеть я создал interface, который определяет набор методов (или свойств), которые объект должен реализовать. Тут я сразу собираю и рендерю всю информацию, которая появляется в поих инпутах и определяю её в объекты авторизированного или регистрирующегося пользователя, которые затем отправлю на сервер. Логистику я осуществляю по средством поля ввода name для инпута:
 
-### `npm run build`
+![image](https://github.com/Aleksandr-Khokhrin/EngApp_TypeScript/assets/147053338/83427a94-2535-42c4-9651-847e9f48dd54)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. useAtom! Это открытие, котороя я для себя сделал. Очень удобный хук в React, который действительно упрощает жизнь фронтенд-разработчику. Я создал два объекта для регистрации и авторизации в моём приложении и просто загружаю данные в эти объекты из любой точки моего приложения (в предыдущей как я импортирую в компонент PrimaryInput useAtom). Очень удобная штука:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![image](https://github.com/Aleksandr-Khokhrin/EngApp_TypeScript/assets/147053338/9358bcc8-71ab-4178-a821-ab6cb5d34177)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Для организации запросов я использую redux-toolkit. В моём приложении мне требуется три запроса на данной стадии: авторизация, регистрация и получение информации о пользователе:
 
-### `npm run eject`
+![image](https://github.com/Aleksandr-Khokhrin/EngApp_TypeScript/assets/147053338/c9866978-cf76-4fbe-aa57-4850a28eee80)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+5. Также в приложении я использую классическую систему роутов из библиотеки react-router-dom:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image](https://github.com/Aleksandr-Khokhrin/EngApp_TypeScript/assets/147053338/4360007c-4c4e-477f-9a82-8e13fe02c869)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Инструментарий:
+В создании клиентской части я использовал хуки/компоненты: 
+- useState(для обновления состояния), 
+- usEeffect(для отслеживания изменения в состояниях),
+- useAtom (для удобной работы со стейтом в любом из компонентов)
+- useDispatch(позволяет работать с Redux хранилищем), 
+- useSelector(позволяет извлекать данные из Redux), 
+- Navigate(для навигации при выполнении определённых алгоритмов), 
+- Link(компонент для навигации при клике), 
+- Routes(для обозначения основной сетки Route), 
+- Route(для привязки определеного компонента к пределенному адресу). 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Вывод: 
+1. Мне нравится работать с TypeScript, так как строгая типизация позволяет избегать множества ошибок. 
+2. Большое удовольствие приходит, когда работаю с фичей useAtom. Очень удобно, нежели пользоваться props или useContext.
+3. По итогу выложил этот небольшой скрипт для демонстрации своей  работы с TypeScript.
 
-## Learn More
+![image](https://github.com/Aleksandr-Khokhrin/MyForumApp_react-front/assets/147053338/d1421d97-c486-45f4-b34f-5faede758ca4)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
